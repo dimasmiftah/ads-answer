@@ -1,6 +1,7 @@
 function encryptSquareCode(text: string): string[] {
+  const pointer = 0;
   const squareSize = findSquareSize(text);
-  const squareOfText = createSquareOfText(squareSize, text);
+  const squareOfText = createSquareOfText(squareSize, text, pointer);
   const ArrayOfRows = createArrayOfRows(squareSize, squareOfText);
   return ArrayOfRows.map((item) => item.join(''));
 }
@@ -13,8 +14,11 @@ function findSquareSize(text: string): number[] {
   return [row, col + 1];
 }
 
-let pointer = 0;
-function createSquareOfText(size: number[], text: string): string[][] {
+function createSquareOfText(
+  size: number[],
+  text: string,
+  pointer: number
+): string[][] {
   const result: string[][] = Array(size[0])
     .fill(0)
     .map((x) => Array(size[1]).fill(0));
@@ -41,6 +45,6 @@ function createArrayOfRows(size: number[], array: string[][]): string[][] {
 }
 
 encryptSquareCode('akusayangsamakamuloh'); // [ 'ayam', 'kamu', 'unal', 'sgko', 'asah' ]
-// encryptSquareCode('haveaniceday'); // [ 'hae', 'and', 'via', 'ecy' ]
-// encryptSquareCode('feedthedog'); // [ 'fto', 'ehg', 'ee', 'dd' ]
-// encryptSquareCode('chillout'); // [ 'clu', 'hlt', 'io' ]
+encryptSquareCode('haveaniceday'); // [ 'hae', 'and', 'via', 'ecy' ]
+encryptSquareCode('feedthedog'); // [ 'fto', 'ehg', 'ee', 'dd' ]
+encryptSquareCode('chillout'); // [ 'clu', 'hlt', 'io' ]
